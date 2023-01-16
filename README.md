@@ -1,2 +1,2 @@
 # trtext
-Chrome extension that translates text upon highlighting
+Chrome extension that translates text upon mouse over
