@@ -1,15 +1,5 @@
 document.body.addEventListener('mouseover', (e) => {
-  console.log(e, 'e');
-  console.log(e.target);
-
-  console.log(e.target.nodeType, 'e.target.nodeType');
-
-  console.log(e.target.value);
-
   if (e.target.textContent) {
-    const text = e.target.textContent;
-    console.log(text, 'text');
-
     e.target.style.backgroundColor = 'green';
 
     e.target.parentNode.addEventListener('mouseout', () => {
@@ -31,12 +21,14 @@ document.body.addEventListener('mouseover', (e) => {
         },
       },
     )
-      .then((response) => response.json())
+      .then((response) => {
+        return response.json();
+      })
       .then((data) => {
         console.log(data, 'data');
       })
-      .catch((error) => {
-        console.error('Error:', error);
+      .catch((err) => {
+        console.error('Error occurred: ', err);
       });
   }
 });
