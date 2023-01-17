@@ -1,14 +1,17 @@
 document.body.addEventListener('mouseover', (e) => {
   if (e.target.textContent) {
-    e.target.style.backgroundColor = 'green';
-
     e.target.parentNode.addEventListener('mouseout', () => {
       e.target.style.backgroundColor = '';
     });
 
-    chrome.runtime.sendMessage({
-      type: 'selectedText',
-      textContent: e.target.textContent,
+    // On click, select the text and highlight it and send it
+    e.target.parentNode.addEventListener('click', () => {
+      e.target.style.backgroundColor = 'green';
+
+      chrome.runtime.sendMessage({
+        type: 'selectedText',
+        textContent: e.target.textContent,
+      });
     });
   }
 });
